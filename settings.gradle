@@ -1,0 +1,3 @@
+rootProject.name='vertx-graphql-testdata'
+
+include ':droids-microservice', ':starwars-microservice', ':starwars-client'
