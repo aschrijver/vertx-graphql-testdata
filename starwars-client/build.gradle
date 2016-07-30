@@ -1,0 +1,7 @@
+apply from: "$rootProject.projectDir/gradle/publishing.gradle"
+
+dependencies {
+    compile "io.engagingspaces:vertx-graphql-service-consumer:$vertxGraphqlVersion"
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "junit:junit:$junitVersion"
+}
