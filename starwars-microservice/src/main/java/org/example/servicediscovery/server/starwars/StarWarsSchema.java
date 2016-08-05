@@ -113,7 +113,7 @@ public class StarWarsSchema implements SchemaDefinition {
             .build();
 
     static final GraphQLObjectType queryType = newObject()
-            .name("StarWarsQuery")
+            .name("StarWarsQueries")
             .field(newFieldDefinition()
                     .name("hero")
                     .type(characterInterface)

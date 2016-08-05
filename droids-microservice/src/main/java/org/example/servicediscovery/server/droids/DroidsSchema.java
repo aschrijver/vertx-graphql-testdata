@@ -112,7 +112,7 @@ public class DroidsSchema implements SchemaDefinition {
             .build();
 
     static final GraphQLObjectType queryType = newObject()
-            .name("QueryType")
+            .name("DroidQueries")
             .field(newFieldDefinition()
                     .name("droid")
                     .type(droidType)

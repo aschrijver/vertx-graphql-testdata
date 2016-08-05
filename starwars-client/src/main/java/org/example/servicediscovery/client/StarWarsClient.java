@@ -75,13 +75,13 @@ public class StarWarsClient extends AbstractVerticle implements SchemaConsumer {
 
     @Override
     public void schemaDiscoveryEvent(Record record) {
-        if (record.match(new JsonObject().put("name", "StarWarsQuery").put("status", "UP"))) {
+        if (record.match(new JsonObject().put("name", "StarWarsQueries").put("status", "UP"))) {
 
             String graphQLQuery = "bla bla";
             JsonObject expected = new JsonObject();
 
             CompositeFuture.all(
-                    queryDirectly(securityRealm(HUMANS), "StarWarsQuery", graphQLQuery),
+                    queryDirectly(securityRealm(HUMANS), "StarWarsQueries", graphQLQuery),
                     queryFromGraphQLService(graphQLQuery, record),
                     queryFromServiceProxy(graphQLQuery, record)
 
