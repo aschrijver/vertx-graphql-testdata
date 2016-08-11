@@ -38,14 +38,15 @@ public class StarWarsServer extends AbstractVerticle implements SchemaPublisher 
     @Override
     public void start(Future<Void> startFuture) {
         registrar = SchemaRegistrar.create(vertx);
-        SchemaPublisher.publishAll(this, new ServiceDiscoveryOptions().setName("graphql-schema-discovery"), rh -> {
+        SchemaPublisher.publish(this, new ServiceDiscoveryOptions().setName("graphql-schema-discovery"),
+                StarWarsSchema.get(), rh -> {
             if (rh.succeeded()) {
                 LOG.info("Published StarWars schema...");
                 startFuture.complete();
             } else {
                 startFuture.fail(rh.cause());
             }
-        }, StarWarsSchema.get());
+        });
     }
 
     @Override
