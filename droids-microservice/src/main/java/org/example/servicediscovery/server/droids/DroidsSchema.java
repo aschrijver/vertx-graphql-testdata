@@ -17,7 +17,7 @@
 package org.example.servicediscovery.server.droids;
 
 import graphql.schema.*;
-import io.engagingspaces.servicediscovery.graphql.publisher.SchemaDefinition;
+import io.engagingspaces.graphql.schema.SchemaDefinition;
 
 import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLArgument.newArgument;

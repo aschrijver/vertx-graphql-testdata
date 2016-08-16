@@ -16,12 +16,12 @@
 
 package org.example.servicediscovery.client;
 
+import io.engagingspaces.graphql.query.QueryResult;
+import io.engagingspaces.graphql.query.Queryable;
 import io.engagingspaces.servicediscovery.graphql.client.GraphQLClient;
 import io.engagingspaces.servicediscovery.graphql.consumer.DiscoveryRegistrar;
 import io.engagingspaces.servicediscovery.graphql.consumer.SchemaConsumer;
 import io.engagingspaces.servicediscovery.graphql.events.SchemaReferenceData;
-import io.engagingspaces.servicediscovery.graphql.query.QueryResult;
-import io.engagingspaces.servicediscovery.graphql.query.Queryable;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
