@@ -24,6 +24,7 @@ import io.vertx.core.Future;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import io.vertx.servicediscovery.ServiceDiscoveryOptions;
+import org.example.graphql.testdata.starwars.StarWarsSchema;
 
 /**
  * Example code demonstrating a a Vert.x verticle that also functions as a schema publisher.

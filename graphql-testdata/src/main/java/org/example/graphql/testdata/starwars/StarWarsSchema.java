@@ -14,7 +14,7 @@
  * You may elect to redistribute this code under either of these licenses.
  */
 
-package org.example.servicediscovery.server.droids;
+package org.example.graphql.testdata.starwars;
 
 import graphql.schema.*;
 import io.engagingspaces.graphql.schema.SchemaDefinition;
@@ -34,15 +34,15 @@ import static graphql.schema.GraphQLObjectType.newObject;
  *
  * @author <a href="https://github.com/aschrijver/">Arnold Schrijver</a>
  */
-public class DroidsSchema implements SchemaDefinition {
+public class StarWarsSchema implements SchemaDefinition {
 
-    public static DroidsSchema get() {
-        return new DroidsSchema();
+    public static SchemaDefinition get() {
+        return new StarWarsSchema();
     }
 
     @Override
     public GraphQLSchema schema() {
-        return droidsSchema;
+        return starWarsSchema;
     }
 
     static final GraphQLEnumType episodeEnum = newEnum()
@@ -52,6 +52,7 @@ public class DroidsSchema implements SchemaDefinition {
             .value("EMPIRE", 5, "Released in 1980.")
             .value("JEDI", 6, "Released in 1983.")
             .build();
+
 
     static final GraphQLInterfaceType characterInterface = newInterface()
             .name("Character")
@@ -76,28 +77,28 @@ public class DroidsSchema implements SchemaDefinition {
                     .description("Which movies they appear in.")
                     .type(new GraphQLList(episodeEnum))
                     .build())
-            .typeResolver(DroidsData.getCharacterTypeResolver())
+            .typeResolver(HumanData.getCharacterTypeResolver())
             .build();
 
-    public static final GraphQLObjectType droidType = newObject()
-            .name("Droid")
-            .description("A mechanical creature in the Star Wars universe.")
+    static final GraphQLObjectType humanType = newObject()
+            .name("Human")
+            .description("A humanoid creature in the Star Wars universe.")
             .withInterface(characterInterface)
             .field(newFieldDefinition()
                     .name("id")
-                    .description("The id of the droid.")
+                    .description("The id of the human.")
                     .type(new GraphQLNonNull(GraphQLString))
                     .build())
             .field(newFieldDefinition()
                     .name("name")
-                    .description("The name of the droid.")
+                    .description("The name of the human.")
                     .type(GraphQLString)
                     .build())
             .field(newFieldDefinition()
                     .name("friends")
-                    .description("The friends of the droid, or an empty list if they have none.")
+                    .description("The friends of the human, or an empty list if they have none.")
                     .type(new GraphQLList(characterInterface))
-                    .dataFetcher(DroidsData.getFriendsDataFetcher())
+                    .dataFetcher(HumanData.getFriendsDataFetcher())
                     .build())
             .field(newFieldDefinition()
                     .name("appearsIn")
@@ -105,38 +106,38 @@ public class DroidsSchema implements SchemaDefinition {
                     .type(new GraphQLList(episodeEnum))
                     .build())
             .field(newFieldDefinition()
-                    .name("primaryFunction")
-                    .description("The primary function of the droid.")
+                    .name("homePlanet")
+                    .description("The home planet of the human, or null if unknown.")
                     .type(GraphQLString)
                     .build())
             .build();
 
     static final GraphQLObjectType queryType = newObject()
-            .name("DroidQueries")
+            .name("StarWarsQueries")
             .field(newFieldDefinition()
-                    .name("droidHero")
-                    .type(droidType)
+                    .name("hero")
+                    .type(characterInterface)
                     .argument(newArgument()
                             .name("episode")
-                            .description("If omitted, returns the hero of the whole saga. If provided, " +
-                                    "returns the hero of that particular episode.")
+                            .description("If omitted, returns the hero of the whole saga." +
+                                    "If provided, returns the hero of that particular episode.")
                             .type(episodeEnum)
                             .build())
-                    .dataFetcher(new StaticDataFetcher(DroidsData.artoo))
+                    .dataFetcher(new StaticDataFetcher(HumanData.vader)) // would be cool
                     .build())
             .field(newFieldDefinition()
-                    .name("droid")
-                    .type(droidType)
+                    .name("human")
+                    .type(humanType)
                     .argument(newArgument()
                             .name("id")
-                            .description("id of the droid")
+                            .description("id of the human")
                             .type(new GraphQLNonNull(GraphQLString))
                             .build())
-                    .dataFetcher(DroidsData.getDroidDataFetcher())
+                    .dataFetcher(HumanData.getHumanDataFetcher())
                     .build())
             .build();
 
-    static final GraphQLSchema droidsSchema = GraphQLSchema.newSchema()
+    static final GraphQLSchema starWarsSchema = GraphQLSchema.newSchema()
             .query(queryType)
             .build();
 }

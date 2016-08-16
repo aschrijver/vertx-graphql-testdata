@@ -14,7 +14,7 @@
  * You may elect to redistribute this code under either of these licenses.
  */
 
-package org.example.servicediscovery.server.starwars;
+package org.example.graphql.testdata.starwars;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.TypeResolver;
@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.example.servicediscovery.server.utils.MapBuilder.entry;
-import static org.example.servicediscovery.server.utils.MapBuilder.immutableMapOf;
+import static org.example.graphql.testdata.utils.MapBuilder.entry;
+import static org.example.graphql.testdata.utils.MapBuilder.immutableMapOf;
 
 /**
  * Test data converted from:

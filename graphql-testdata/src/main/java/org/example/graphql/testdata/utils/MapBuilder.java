@@ -14,7 +14,7 @@
  * You may elect to redistribute this code under either of these licenses.
  */
 
-package org.example.servicediscovery.server.utils;
+package org.example.graphql.testdata.utils;
 
 import java.util.AbstractMap;
 import java.util.Collections;

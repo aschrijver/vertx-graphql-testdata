@@ -14,18 +14,19 @@
  * You may elect to redistribute this code under either of these licenses.
  */
 
-package org.example.servicediscovery.server.droids;
+package org.example.graphql.testdata.droids;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.TypeResolver;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.example.servicediscovery.server.utils.MapBuilder.entry;
-import static org.example.servicediscovery.server.utils.MapBuilder.immutableMapOf;
+import static org.example.graphql.testdata.utils.MapBuilder.entry;
+import static org.example.graphql.testdata.utils.MapBuilder.immutableMapOf;
 
 /**
  * Test data converted from:
