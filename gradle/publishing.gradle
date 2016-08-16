@@ -19,7 +19,7 @@ artifacts {
 publishing {
     publications {
         maven(MavenPublication) {
-            artifactId "vertx-test-graphql-$archivesBaseName"
+            artifactId mavenPublicationName
             from components.java
 
             artifact sourcesJar {
@@ -68,7 +68,7 @@ bintray {
     publish = true
     pkg {
         repo = 'maven'
-        name = "vertx-test-graphql-$project.name"
+        name = mavenPublicationName
         desc = projectDescription
         userOrg = 'engagingspaces'
         websiteUrl = 'https://github.com/engagingspaces/vertx-graphql-testdata'

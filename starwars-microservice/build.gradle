@@ -1,6 +1,7 @@
 apply from: "$rootProject.projectDir/gradle/publishing.gradle"
 
 dependencies {
+    compile project(':graphql-testdata')
     compile "io.engagingspaces:vertx-graphql-service-publisher:$vertxGraphqlVersion"
     compile "io.vertx:vertx-core:$vertxVersion"
 }

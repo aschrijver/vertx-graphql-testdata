@@ -1,0 +1,5 @@
+apply from: "$rootProject.projectDir/gradle/publishing.gradle"
+
+dependencies {
+    compile "io.engagingspaces:vertx-graphql-schema-proxy:$vertxGraphqlVersion"
+}
